@@ -1,0 +1,27 @@
+@use "../../../styles/colors" as colors;
+@use "../../../styles/common" as common;
+
+.sidebar {
+  position: fixed;
+  margin-top: common.$header-height;
+  background-color: colors.$gray-light;
+  height: 100%;
+  width: 30%;
+  max-width: 15rem;
+
+  @media screen and (min-width: 540px) {
+    margin-top: common.$header-height + 1rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 1rem;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 20rem;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+}
