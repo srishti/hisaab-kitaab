@@ -1,7 +1,7 @@
-import { UiSidebarListItem } from "../../UI/UIComponents";
+import { UiSidebarListItem } from "../LayoutComponents";
 import styles from "./SidebarListItem.module.scss";
 
-const SidebarMenu: React.FC<UiSidebarListItem> = (props) => {
+const SidebarListItem: React.FC<UiSidebarListItem> = (props) => {
   let styleClasses = [styles["sidebar-menu"]];
   if (props.active) {
     styleClasses.push(styles["active"]);
@@ -17,4 +17,4 @@ const SidebarMenu: React.FC<UiSidebarListItem> = (props) => {
   );
 };
 
-export default SidebarMenu;
+export default SidebarListItem;

@@ -6,19 +6,25 @@
   margin-top: common.$header-height;
   background-color: colors.$gray-light;
   height: 100%;
-  width: 30%;
+  width: 33%;
   max-width: 15rem;
+  transform: translateX(-100%);
+  transition: common.$transition-linear;
 
-  @media screen and (min-width: 540px) {
+  @media screen and (min-width: 541px) {
     margin-top: common.$header-height + 1rem;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     font-size: 1rem;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1201px) {
     max-width: 20rem;
+  }
+
+  &.show {
+    transform: translateX(0);
   }
 
   ul {
