@@ -10,6 +10,7 @@
   max-width: 15rem;
   transform: translateX(-100%);
   transition: common.$transition-linear;
+  z-index: 1000;
 
   @media screen and (min-width: 541px) {
     margin-top: common.$header-height + 1rem;

@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 import styles from "./MainNavigation.module.scss";
 
-interface MainNavigationProps {
+interface MainNavigationComponent {
   isSidebarVisible?: boolean;
   onToggleSidebar?: () => void;
 }
 
-const MainNavigation: React.FC<MainNavigationProps> = (props) => {
+const MainNavigation: React.FC<MainNavigationComponent> = (props) => {
   return (
     <header className={styles["main-navigation"]}>
       <div className={styles["menu-logo"]}>
@@ -17,7 +17,7 @@ const MainNavigation: React.FC<MainNavigationProps> = (props) => {
           className={styles["bars-icon"]}
           onClick={props.onToggleSidebar}
         />
-        <h2 className={styles["logo"]}>Hisaab Kitaab</h2>
+        <h3 className={styles["logo"]}>Hisaab Kitaab</h3>
       </div>
       <div>
         <Button onClick={/* TODO: Pass event handler */ () => {}}>Login</Button>

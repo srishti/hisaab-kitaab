@@ -12,6 +12,7 @@
   padding-right: 1.5rem;
   background-color: colors.$primary-dark;
   color: colors.$white;
+  z-index: 1000;
 
   @media screen and (min-width: 541px) {
     height: common.$header-height + 1rem;
@@ -19,7 +20,7 @@
   }
 
   .menu-logo {
-    padding-left: 1.5rem;
+    padding-left: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,11 +30,11 @@
     }
 
     .bars-icon {
-      height: 2.5rem;
-      width: 2.5rem;
+      height: 2.25rem;
+      width: 2.25rem;
       padding: 0.5rem;
       display: block;
-      margin-right: 1.5rem;
+      margin-right: 1rem;
       cursor: pointer;
 
       @media screen and (min-width: 769px) {
