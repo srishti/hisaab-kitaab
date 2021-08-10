@@ -1,22 +1,25 @@
 @use "../../../styles/colors" as colors;
 @use "../../../styles/fonts" as *;
+@use "../../../styles/common" as common;
 
 .main-navigation {
+  height: common.$header-height;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  background-color: colors.$black;
+  position: fixed;
+  width: 100%;
+  padding: 0 1rem;
+  background-color: colors.$primary-dark;
   color: colors.$white;
 
   .logo-text {
     margin: 0;
-    color: colors.$primary-light;
     font-family: $ff-secondary;
   }
 
-  @media screen and (min-width: 480px) {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  @media screen and (min-width: 540px) {
+    height: common.$header-height + 1rem;
+    padding: 0 2rem;
   }
 }
