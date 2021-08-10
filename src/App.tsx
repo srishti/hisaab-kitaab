@@ -1,7 +1,7 @@
+import Dashboard from "./pages/Dashboard/Dashboard";
+
 const App = () => {
-  return (
-    <h1>Hisaab Kitaab</h1>
-  );
-}
+  return <Dashboard />;
+};
 
 export default App;
