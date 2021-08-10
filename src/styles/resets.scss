@@ -1,0 +1,98 @@
+/* 
+===============
+CSS Resets
+===============
+*/
+
+/* FILE IMPORTS */
+@use "./colors" as colors;
+@use "./fonts" as *;
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $ff-primary;
+  font-size: $fs-standard;
+  line-height: 1.5;
+  background: colors.$white;
+  color: colors.$black;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $ff-primary;
+  line-height: 1.25;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: $fs-standard * 3.4;
+}
+
+h2 {
+  font-size: $fs-standard * 2.2;
+}
+
+h3 {
+  font-size: $fs-standard * 1.4;
+}
+
+h4 {
+  font-size: $fs-standard;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  color: colors.$gray-dark;
+}
+
+@media screen and (min-width: 1024px) {
+  $fs-standard: 1rem;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+
+  h1 {
+    font-size: $fs-standard * 4;
+  }
+
+  h2 {
+    font-size: $fs-standard * 2.5;
+  }
+
+  h3 {
+    font-size: $fs-standard * 1.75;
+  }
+
+  h4,
+  body {
+    font-size: $fs-standard;
+  }
+}

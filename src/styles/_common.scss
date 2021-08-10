@@ -1,0 +1,11 @@
+/* VARIABLES */
+$transition-linear: all 0.3s linear;
+$box-shadow-light: 0 1px 3px rgba(0, 0, 0, 0.3);
+$box-shadow-dark: 0 3px 5px rgba(0, 0, 0, 0.3);
+
+/* MIXINS */
+@mixin flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
