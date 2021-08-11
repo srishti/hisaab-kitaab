@@ -14,7 +14,7 @@ const Signup = React.lazy(
 );
 const Login = React.lazy(() => import("../pages/Authentication/Login/Login"));
 const Dashboard = React.lazy(() => import("../pages/Dashboard/Dashboard"));
-// const NotFound = React.lazy(() => import("../pages/NotFound/NotFound"));
+const NotFound = React.lazy(() => import("../pages/NotFound/NotFound"));
 
 const AppRoutes: React.FC = () => {
   const authContext = useContext(AuthContext);
@@ -39,9 +39,9 @@ const AppRoutes: React.FC = () => {
           <Route path={RoutePath.Dashboard}>
             <Dashboard />
           </Route>
-          {/* <Route path="*">
+          <Route path="*">
             <NotFound />
-          </Route> */}
+          </Route>
         </Switch>
       </Suspense>
     </Router>

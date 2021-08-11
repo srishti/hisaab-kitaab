@@ -49,15 +49,15 @@ h4 {
 }
 
 h1 {
-  font-size: $fs-standard * 3;
+  font-size: $fs-standard * 2.2;
 }
 
 h2 {
-  font-size: $fs-standard * 1.9;
+  font-size: $fs-standard * 1.5;
 }
 
 h3 {
-  font-size: $fs-standard * 1.3;
+  font-size: $fs-standard * 1.1;
 }
 
 h4 {
@@ -69,7 +69,35 @@ p {
   color: colors.$gray-dark;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 769px) {
+  $fs-standard: 1rem;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+
+  h1 {
+    font-size: $fs-standard * 3;
+  }
+
+  h2 {
+    font-size: $fs-standard * 1.9;
+  }
+
+  h3 {
+    font-size: $fs-standard * 1.3;
+  }
+
+  h4,
+  body {
+    font-size: $fs-standard;
+  }
+}
+
+@media screen and (min-width: 1025px) {
   $fs-standard: 1rem;
 
   h1,
