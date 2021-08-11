@@ -3,10 +3,9 @@
 @use "../../../styles/common" as common;
 
 .main-navigation {
+  @include common.flex-row-space-between-center-aligned-items;
+
   height: common.$header-height;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: fixed;
   width: 100%;
   padding-right: 1.5rem;
@@ -21,9 +20,7 @@
 
   .menu-logo {
     padding-left: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include common.flex-row-space-between-center-aligned-items;
 
     @media screen and (min-width: 541px) {
       padding-left: 2rem;
