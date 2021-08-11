@@ -1,0 +1,9 @@
+@use "../../../styles/colors" as colors;
+@use "../../../styles/common" as common;
+
+.card {
+  padding: 1.5rem;
+  border: 1px solid colors.$gray;
+  border-radius: 0.5rem;
+  box-shadow: common.$box-shadow-dark;
+}
