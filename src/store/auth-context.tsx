@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { User } from "../models/user";
 import { AuthAPI } from "../api/auth/authApi";
+import * as localStorageHelpers from "../utils/LStoroge/localStorageHelpers";
 
 export interface CurrentUser extends Partial<User> {
   displayName?: string;
@@ -39,9 +40,13 @@ export const AuthContextProvider: React.FC = (props) => {
 
   const authAPI = new AuthAPI();
 
+  const checkIfLoggedIn = (): boolean => {
+    return localStorageHelpers.getItemFromLocalStorage("isLoggedIn") || false;
+  };
+
   const signup = (user: User) => {
     const successCallback = (userCredentials: any) => {
-      // TODO: Redirect to login page
+      // TODO: Show success message
     };
     authAPI.signup(user, successCallback);
   };
@@ -59,8 +64,12 @@ export const AuthContextProvider: React.FC = (props) => {
         refreshToken: userCredentials.user.refreshToken,
         uid: userCredentials.user.uid,
       };
+      // TODO: Show success message
       setIsLoggedIn(true);
       setCurrentUser(currentUser);
+
+      localStorageHelpers.setItemInLocalStorage("isLoggedIn", true);
+      localStorageHelpers.setItemInLocalStorage("currentUser", currentUser);
     };
     authAPI.login(email, password, successCallback);
   };
@@ -71,7 +80,7 @@ export const AuthContextProvider: React.FC = (props) => {
 
   const authContextData: AuthContextData = {
     currentUser: currentUser,
-    isLoggedIn: isLoggedIn,
+    isLoggedIn: isLoggedIn || checkIfLoggedIn(),
     onSignup: signup,
     onLogin: login,
     onLogout: logout,
