@@ -1,0 +1,32 @@
+@use "../../../styles/colors" as colors;
+
+.loader {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &:after {
+    content: " ";
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid colors.$black;
+    border-color: colors.$secondary transparent colors.$secondary transparent;
+    animation: rotate 1.2s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
