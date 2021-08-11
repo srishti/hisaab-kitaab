@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MainNavigation from "./MainNavigation/MainNavigation";
 import Sidebar from "./Sidebar/Sidebar";
 import Backdrop from "./Backdrop/Backdrop";
-import { sidebarData } from "../../pages/Dashboard/sidebarData";
+import AuthContext from "../../store/auth-context";
 import * as uiHelpers from "../../utils/UI/uiHelpers";
+import { sidebarData } from "../../pages/Dashboard/sidebarData";
 
-const Layout = () => {
+const Layout: React.FC = (props) => {
   const [isDeviceSmallScreen, setIsDeviceSmallScreen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
+  const authContext = useContext(AuthContext);
+
   const { checkIfSmallScreenDevice } = uiHelpers;
 
   const toggleSidebarVisibility = () => {
@@ -23,14 +27,19 @@ const Layout = () => {
 
   return (
     <>
-      <MainNavigation
-        isSidebarVisible={isSidebarVisible}
-        onToggleSidebar={toggleSidebarVisibility}
-      />
-      <Sidebar menuList={sidebarData} isVisible={isSidebarVisible} />
-      {isDeviceSmallScreen && isSidebarVisible && (
-        <Backdrop onClick={() => setIsSidebarVisible(false)} />
+      {authContext.isLoggedIn && (
+        <>
+          <MainNavigation
+            isSidebarVisible={isSidebarVisible}
+            onToggleSidebar={toggleSidebarVisibility}
+          />
+          <Sidebar menuList={sidebarData} isVisible={isSidebarVisible} />
+          {isDeviceSmallScreen && isSidebarVisible && (
+            <Backdrop onClick={() => setIsSidebarVisible(false)} />
+          )}
+        </>
       )}
+      <main>{props.children}</main>
     </>
   );
 };
