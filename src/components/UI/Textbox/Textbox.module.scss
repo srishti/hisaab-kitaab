@@ -1,0 +1,23 @@
+@use "../../../styles/colors" as colors;
+
+.textbox {
+  label {
+    display: block;
+    color: colors.$gray-dark;
+    margin-bottom: 0.25rem;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid colors.$gray;
+    outline: none;
+
+    &:active,
+    &:focus {
+      border-color: colors.$primary-dark;
+    }
+  }
+}
