@@ -29,7 +29,7 @@ const Layout = () => {
       />
       <Sidebar menuList={sidebarData} isVisible={isSidebarVisible} />
       {isDeviceSmallScreen && isSidebarVisible && (
-        <Backdrop onClose={() => setIsSidebarVisible(false)} />
+        <Backdrop onClick={() => setIsSidebarVisible(false)} />
       )}
     </>
   );

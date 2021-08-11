@@ -18,10 +18,10 @@ const Sidebar: React.FC<UiSidebar> = (props) => {
       <ul>
         {props.menuList.map((menuItem) => (
           <SidebarListItem
-            key={menuItem.id}
-            id={menuItem.id}
-            value={menuItem.value}
             active={menuItem.active}
+            id={menuItem.id}
+            key={menuItem.id}
+            value={menuItem.value}
             onClick={menuItem.onClick}
           />
         ))}

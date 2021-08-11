@@ -2,14 +2,14 @@ import React from "react";
 
 export interface UiSidebarListItem
   extends React.LiHTMLAttributes<HTMLLIElement> {
+  active?: boolean | undefined;
+  className?: string | undefined;
   id: string;
   value: React.LiHTMLAttributes<HTMLLIElement>["value"];
-  active?: boolean;
-  className?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler | undefined;
 }
 
 export interface UiSidebar {
-  isVisible?: boolean;
+  isVisible?: boolean | undefined;
   menuList: UiSidebarListItem[];
 }
