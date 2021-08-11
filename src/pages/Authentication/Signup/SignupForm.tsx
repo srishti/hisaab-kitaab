@@ -1,10 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import Card from "../../../components/UI/Card/Card";
 import Textbox from "../../../components/UI/Textbox/Textbox";
 import Button from "../../../components/UI/Button/Button";
+import AuthContext from "../../../store/auth-context";
+import { User } from "../../../models/user";
 import styles from "../Authentication.module.scss";
 
 const SignupForm: React.FC = () => {
+  const authContext = useContext(AuthContext);
+
   const firstNameInputRef = useRef<HTMLInputElement>(null);
   const lastNameInputRef = useRef<HTMLInputElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
@@ -19,6 +23,16 @@ const SignupForm: React.FC = () => {
     const email = emailInputRef.current!.value;
     const password = passwordInputRef.current!.value;
     const confirmPassword = confirmPasswordInputRef.current!.value;
+
+    const user: User = {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+    };
+
+    authContext.onSignup(user);
   };
 
   return (
