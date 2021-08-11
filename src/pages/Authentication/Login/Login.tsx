@@ -1,5 +1,5 @@
 import LoginForm from "./LoginForm";
-import styles from "./Login.module.scss";
+import styles from "../Authentication.module.scss";
 
 const Login: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import Card from "../../../components/UI/Card/Card";
 import Textbox from "../../../components/UI/Textbox/Textbox";
 import Button from "../../../components/UI/Button/Button";
-import styles from "./LoginForm.module.scss";
+import styles from "../Authentication.module.scss";
 
 const LoginForm: React.FC = () => {
   return (
