@@ -1,31 +1,52 @@
+import React, { useRef } from "react";
 import Card from "../../../components/UI/Card/Card";
 import Textbox from "../../../components/UI/Textbox/Textbox";
 import Button from "../../../components/UI/Button/Button";
 import styles from "../Authentication.module.scss";
 
 const SignupForm: React.FC = () => {
+  const firstNameInputRef = useRef<HTMLInputElement>(null);
+  const lastNameInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
+  const confirmPasswordInputRef = useRef<HTMLInputElement>(null);
+
+  const submitSignupFormHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const firstName = firstNameInputRef.current!.value;
+    const lastName = lastNameInputRef.current!.value;
+    const email = emailInputRef.current!.value;
+    const password = passwordInputRef.current!.value;
+    const confirmPassword = confirmPasswordInputRef.current!.value;
+  };
+
   return (
     <Card>
-      <form>
+      <form onSubmit={submitSignupFormHandler}>
         <Textbox
           className={styles["form-field"]}
           input={{ autoComplete: "first-name", type: "text", id: "first-name" }}
           label={{ value: "First Name" }}
+          ref={firstNameInputRef}
         />
         <Textbox
           className={styles["form-field"]}
           input={{ autoComplete: "last-name", type: "text", id: "last-name" }}
           label={{ value: "Last Name" }}
+          ref={lastNameInputRef}
         />
         <Textbox
           className={styles["form-field"]}
           input={{ autoComplete: "email", type: "email", id: "email" }}
           label={{ value: "Email" }}
+          ref={emailInputRef}
         />
         <Textbox
           className={styles["form-field"]}
           input={{ autoComplete: "password", type: "password", id: "password" }}
           label={{ value: "Password" }}
+          ref={passwordInputRef}
         />
         <Textbox
           className={styles["form-field"]}
@@ -35,8 +56,11 @@ const SignupForm: React.FC = () => {
             id: "confirm-password",
           }}
           label={{ value: "Confirm Password" }}
+          ref={confirmPasswordInputRef}
         />
-        <Button primary>Signup</Button>
+        <Button primary type="submit">
+          Signup
+        </Button>
       </form>
     </Card>
   );

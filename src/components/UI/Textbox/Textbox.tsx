@@ -1,7 +1,8 @@
+import React from "react";
 import { UiTextbox } from "../UIComponents";
 import styles from "./Textbox.module.scss";
 
-const Textbox: React.FC<UiTextbox> = (props) => {
+const Textbox = React.forwardRef<HTMLInputElement, UiTextbox>((props, ref) => {
   let styleClasses = [styles["textbox"]];
   if (props.className) {
     styleClasses.unshift(props.className);
@@ -14,9 +15,9 @@ const Textbox: React.FC<UiTextbox> = (props) => {
           {props.label.value}
         </label>
       )}
-      <input {...props.input} />
+      <input {...props.input} ref={ref} />
     </div>
   );
-};
+});
 
 export default Textbox;
