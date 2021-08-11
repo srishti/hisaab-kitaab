@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import MainNavigation from "./MainNavigation/MainNavigation";
 import Sidebar from "./Sidebar/Sidebar";
 import Backdrop from "./Backdrop/Backdrop";
-import AuthContext from "../../store/auth-context";
+import { useAuth } from "../../hooks/auth/use-auth";
 import * as uiHelpers from "../../utils/UI/uiHelpers";
 import { sidebarData } from "../../pages/Dashboard/sidebarData";
 
@@ -10,7 +10,7 @@ const Layout: React.FC = (props) => {
   const [isDeviceSmallScreen, setIsDeviceSmallScreen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
-  const authContext = useContext(AuthContext);
+  const auth = useAuth();
 
   const { checkIfSmallScreenDevice } = uiHelpers;
 
@@ -27,7 +27,7 @@ const Layout: React.FC = (props) => {
 
   return (
     <>
-      {authContext.isLoggedIn && (
+      {auth.isLoggedIn && (
         <>
           <MainNavigation
             isSidebarVisible={isSidebarVisible}
