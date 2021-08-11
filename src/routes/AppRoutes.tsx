@@ -5,6 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 import Loader from "../components/UI/Loader/Loader";
 import { RoutePath } from "./routes";
 import { useAuth } from "../hooks/auth/use-auth";
@@ -34,9 +35,9 @@ const AppRoutes: React.FC = () => {
           <Route path={RoutePath.Login} exact>
             <Login />
           </Route>
-          <Route path={RoutePath.Dashboard}>
+          <PrivateRoute path={RoutePath.Dashboard}>
             <Dashboard />
-          </Route>
+          </PrivateRoute>
           <Route path="*">
             <NotFound />
           </Route>
