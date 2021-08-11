@@ -3,8 +3,8 @@ import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 import styles from "./MainNavigation.module.scss";
 
 interface MainNavigationComponent {
-  isSidebarVisible?: boolean | undefined;
-  onToggleSidebar?: () => void | undefined;
+  isSidebarVisible?: boolean;
+  onToggleSidebar?: () => void;
 }
 
 const MainNavigation: React.FC<MainNavigationComponent> = (props) => {

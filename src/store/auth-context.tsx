@@ -3,19 +3,19 @@ import { User } from "../models/user";
 import { AuthAPI } from "../api/auth/authApi";
 
 export interface CurrentUser extends Partial<User> {
-  displayName?: string | undefined;
+  displayName?: string;
   email: string;
-  emailVerified?: boolean | undefined;
-  isNewUser?: boolean | undefined;
-  phoneNumber?: string | undefined;
-  photoUrl?: string | undefined;
-  providerId?: string | undefined;
-  refreshToken?: string | undefined;
+  emailVerified?: boolean;
+  isNewUser?: boolean;
+  phoneNumber?: string;
+  photoUrl?: string;
+  providerId?: string;
+  refreshToken?: string;
   uid: string;
 }
 
 interface AuthContextData {
-  currentUser?: CurrentUser | undefined;
+  currentUser?: CurrentUser;
   isLoggedIn: boolean;
   onSignup: (user: User) => void;
   onLogin: (email: string, password: string) => void;

@@ -2,23 +2,23 @@ import React from "react";
 
 export interface UiButton
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string | undefined;
-  primary?: boolean | undefined;
-  onClick?: React.MouseEventHandler | undefined;
+  className?: string;
+  primary?: boolean;
+  onClick?: React.MouseEventHandler;
 }
 
 interface UiInput extends React.InputHTMLAttributes<HTMLInputElement> {
-  className?: string | undefined;
-  id?: string | undefined;
+  className?: string;
+  id?: string;
 }
 
 interface UiLabel extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  className?: string | undefined;
-  value: string | ReadonlyArray<string> | number;
+  className?: string;
+  value: string | readonly string[] | number;
 }
 
 export interface UiTextbox {
-  className?: string | undefined;
+  className?: string;
   input: UiInput;
-  label?: UiLabel | undefined;
+  label?: UiLabel;
 }

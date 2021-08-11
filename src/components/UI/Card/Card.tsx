@@ -1,7 +1,7 @@
 import styles from "./Card.module.scss";
 
 interface CardComponent {
-  className?: string | undefined;
+  className?: string;
 }
 
 const Card: React.FC<CardComponent> = (props) => {
