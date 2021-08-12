@@ -11,7 +11,7 @@ export const sidebarData: UiSidebarListItem[] = [
   {
     id: "2",
     value: SidebarMenuType.Accounts,
-    routePath: RoutePath.Dashboard,
+    routePath: RoutePath.AccountsList,
   },
   {
     id: "3",
