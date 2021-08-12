@@ -4,7 +4,7 @@ import { RoutePath } from "../../routes/routes";
 import { AuthContextData } from "./auth";
 import { CurrentUser, User } from "../../models/user";
 import { AuthAPI } from "../../api/auth/authApi";
-import * as localStorageHelpers from "../../utils/LStoroge/localStorageHelpers";
+import * as utilsLStoreHelpers from "../../utils/LStoroge/localStorageHelpers";
 
 export const useAuthProvider = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,8 +16,8 @@ export const useAuthProvider = () => {
 
   const checkIfLoggedIn = (): boolean => {
     return (
-      localStorageHelpers.getItemFromLocalStorage(
-        localStorageHelpers.LStoreKeys.isAuthenticated
+      utilsLStoreHelpers.getItemFromLocalStorage(
+        utilsLStoreHelpers.LStoreKeys.isAuthenticated
       ) || false
     );
   };
@@ -46,12 +46,12 @@ export const useAuthProvider = () => {
       setIsAuthenticated(true);
       setCurrentUser(currentUser);
 
-      localStorageHelpers.setItemInLocalStorage(
-        localStorageHelpers.LStoreKeys.isAuthenticated,
+      utilsLStoreHelpers.setItemInLocalStorage(
+        utilsLStoreHelpers.LStoreKeys.isAuthenticated,
         true
       );
-      localStorageHelpers.setItemInLocalStorage(
-        localStorageHelpers.LStoreKeys.currentUser,
+      utilsLStoreHelpers.setItemInLocalStorage(
+        utilsLStoreHelpers.LStoreKeys.currentUser,
         currentUser
       );
 

@@ -3,7 +3,7 @@ import MainNavigation from "./MainNavigation/MainNavigation";
 import Sidebar from "./Sidebar/Sidebar";
 import Backdrop from "./Backdrop/Backdrop";
 import { useAuth } from "../../hooks/auth/use-auth";
-import * as uiHelpers from "../../utils/UI/uiHelpers";
+import * as utilsUiHelpers from "../../utils/UI/uiHelpers";
 import { sidebarData } from "./Sidebar/sidebarData";
 import styles from "./Layout.module.scss";
 
@@ -13,7 +13,7 @@ const Layout: React.FC = (props) => {
 
   const auth = useAuth();
 
-  const { checkIfSmallScreenDevice } = uiHelpers;
+  const { checkIfSmallScreenDevice } = utilsUiHelpers;
 
   const toggleSidebarVisibility = () => {
     setIsSidebarVisible((prevIsSidebarVisible) => !prevIsSidebarVisible);
