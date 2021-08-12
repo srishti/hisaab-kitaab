@@ -1,0 +1,41 @@
+@use "../../styles/colors" as colors;
+
+.accounts-list {
+  ul {
+    list-style-type: none;
+  }
+}
+
+.add-account-btn {
+  margin-bottom: 1rem;
+}
+
+.accounts-list-heading,
+.account-list-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid colors.$gray-light;
+
+  h3,
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+.accounts-list-heading {
+  color: colors.$primary;
+}
+
+.account-list-item h4 {
+  font-weight: lighter;
+  display: inline-block;
+  word-break: break-word;
+  color: colors.$gray-dark;
+}
+
+.account-balance {
+  display: flex;
+  align-items: center;
+}

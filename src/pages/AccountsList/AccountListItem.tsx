@@ -1,5 +1,8 @@
 import React from "react";
 import { Account } from "../../models/account";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRupeeSign } from "@fortawesome/free-solid-svg-icons";
+import styles from "./AccountsList.module.scss";
 
 interface AccountsListItemComponent extends Account {
   className?: string;
@@ -7,10 +10,14 @@ interface AccountsListItemComponent extends Account {
 
 const AccountListItem: React.FC<AccountsListItemComponent> = (props) => {
   return (
-    <li>
+    <li className={styles["account-list-item"]}>
       <h4>{props.name}</h4>
-      <div>{props.type}</div>
-      <div>{props.currentBalance}</div>
+      <h4>{props.type}</h4>
+      <div>
+        <FontAwesomeIcon icon={faRupeeSign} />
+        &nbsp;
+        <h4>{props.currentBalance.toFixed(2)}</h4>
+      </div>
     </li>
   );
 };
