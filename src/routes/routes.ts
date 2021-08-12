@@ -5,5 +5,6 @@ export enum RoutePath {
   Dashboard = "/dashboard",
   AccountsList = "/accounts",
   AddAccount = "/accounts/add",
+  TransactionsList = "/transactions",
   NotFound = "*",
 }

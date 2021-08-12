@@ -16,6 +16,6 @@ export const sidebarData: UiSidebarListItem[] = [
   {
     id: "3",
     value: SidebarMenuType.Transactions,
-    routePath: RoutePath.Dashboard,
+    routePath: RoutePath.TransactionsList,
   },
 ];
