@@ -2,7 +2,11 @@ import { UiSidebar } from "../LayoutComponents";
 import SidebarListItem from "./SidebarListItem";
 import styles from "./Sidebar.module.scss";
 
-const Sidebar: React.FC<UiSidebar> = (props) => {
+interface SidebarComponent extends UiSidebar {
+  className?: string;
+}
+
+const Sidebar: React.FC<SidebarComponent> = (props) => {
   let styleClasses = [styles["sidebar"]];
   if (props.isVisible) {
     styleClasses.push(styles["show"]);
@@ -11,6 +15,9 @@ const Sidebar: React.FC<UiSidebar> = (props) => {
     if (classIndex > -1) {
       styleClasses.splice(classIndex, 1);
     }
+  }
+  if (props.className) {
+    styleClasses.unshift(props.className);
   }
 
   return (

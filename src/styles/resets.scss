@@ -16,7 +16,10 @@ CSS Resets
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
+  height: 100%;
   font-family: $ff-primary;
   font-size: $fs-standard;
   line-height: 1.5;

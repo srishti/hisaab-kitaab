@@ -5,6 +5,7 @@ import Backdrop from "./Backdrop/Backdrop";
 import { useAuth } from "../../hooks/auth/use-auth";
 import * as uiHelpers from "../../utils/UI/uiHelpers";
 import { sidebarData } from "./Sidebar/sidebarData";
+import styles from "./Layout.module.scss";
 
 const Layout: React.FC = (props) => {
   const [isDeviceSmallScreen, setIsDeviceSmallScreen] = useState(false);
@@ -26,21 +27,26 @@ const Layout: React.FC = (props) => {
   }, [checkIfSmallScreenDevice]);
 
   return (
-    <>
+    <div className={styles["layout"]}>
       {auth.isLoggedIn && (
-        <>
-          <MainNavigation
-            isSidebarVisible={isSidebarVisible}
-            onToggleSidebar={toggleSidebarVisibility}
-          />
-          <Sidebar menuList={sidebarData} isVisible={isSidebarVisible} />
-          {isDeviceSmallScreen && isSidebarVisible && (
-            <Backdrop onClick={() => setIsSidebarVisible(false)} />
-          )}
-        </>
+        <MainNavigation
+          className={styles["main-navigation"]}
+          isSidebarVisible={isSidebarVisible}
+          onToggleSidebar={toggleSidebarVisibility}
+        />
       )}
-      <main>{props.children}</main>
-    </>
+      {auth.isLoggedIn && (
+        <Sidebar
+          className={styles["sidebar"]}
+          isVisible={isSidebarVisible}
+          menuList={sidebarData}
+        />
+      )}
+      <main className={styles["main-content"]}>{props.children}</main>
+      {auth.isLoggedIn && isDeviceSmallScreen && isSidebarVisible && (
+        <Backdrop onClick={() => setIsSidebarVisible(false)} />
+      )}
+    </div>
   );
 };
 

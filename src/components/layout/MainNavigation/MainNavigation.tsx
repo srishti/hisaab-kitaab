@@ -3,13 +3,19 @@ import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 import styles from "./MainNavigation.module.scss";
 
 interface MainNavigationComponent {
+  className?: string;
   isSidebarVisible?: boolean;
   onToggleSidebar?: () => void;
 }
 
 const MainNavigation: React.FC<MainNavigationComponent> = (props) => {
+  let styleClasses = [styles["main-navigation"]];
+  if (props.className) {
+    styleClasses.push(props.className);
+  }
+
   return (
-    <header className={styles["main-navigation"]}>
+    <header className={styleClasses.join(" ")}>
       <div className={styles["menu-logo"]}>
         <FontAwesomeIcon
           className={styles["bars-icon"]}
