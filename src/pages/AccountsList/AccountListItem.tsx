@@ -13,7 +13,7 @@ const AccountListItem: React.FC<AccountsListItemComponent> = (props) => {
     <li className={styles["account-list-item"]}>
       <h4>{props.name}</h4>
       <h4>{props.type}</h4>
-      <div>
+      <div className={styles["account-balance"]}>
         <FontAwesomeIcon icon={faRupeeSign} />
         &nbsp;
         <h4>{props.currentBalance.toFixed(2)}</h4>

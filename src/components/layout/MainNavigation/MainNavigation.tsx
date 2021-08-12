@@ -11,7 +11,7 @@ interface MainNavigationComponent {
 const MainNavigation: React.FC<MainNavigationComponent> = (props) => {
   let styleClasses = [styles["main-navigation"]];
   if (props.className) {
-    styleClasses.push(props.className);
+    styleClasses.unshift(props.className);
   }
 
   return (
