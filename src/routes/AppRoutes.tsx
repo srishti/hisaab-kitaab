@@ -23,7 +23,7 @@ const AppRoutes: React.FC = () => {
       <Switch>
         <Route path={RoutePath.Home} exact>
           <Redirect
-            to={auth.isLoggedIn ? RoutePath.Dashboard : RoutePath.Login}
+            to={auth.isAuthenticated ? RoutePath.Dashboard : RoutePath.Login}
           />
         </Route>
 

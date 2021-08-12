@@ -1,3 +1,8 @@
+export enum LStoreKeys {
+  isAuthenticated = "authenticated",
+  currentUser = "user",
+}
+
 export const getItemFromLocalStorage = (key: string): any => {
   const value = localStorage.getItem(key);
   if (value) {

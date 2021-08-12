@@ -7,7 +7,7 @@ import { AuthAPI } from "../../api/auth/authApi";
 import * as localStorageHelpers from "../../utils/LStoroge/localStorageHelpers";
 
 export const useAuthProvider = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState<CurrentUser>();
 
   const history = useHistory();
@@ -15,7 +15,11 @@ export const useAuthProvider = () => {
   const authAPI = new AuthAPI();
 
   const checkIfLoggedIn = (): boolean => {
-    return localStorageHelpers.getItemFromLocalStorage("isLoggedIn") || false;
+    return (
+      localStorageHelpers.getItemFromLocalStorage(
+        localStorageHelpers.LStoreKeys.isAuthenticated
+      ) || false
+    );
   };
 
   const signup = (user: User) => {
@@ -39,11 +43,17 @@ export const useAuthProvider = () => {
         uid: userCredentials.user.uid,
       };
       // TODO: Show success message
-      setIsLoggedIn(true);
+      setIsAuthenticated(true);
       setCurrentUser(currentUser);
 
-      localStorageHelpers.setItemInLocalStorage("isLoggedIn", true);
-      localStorageHelpers.setItemInLocalStorage("currentUser", currentUser);
+      localStorageHelpers.setItemInLocalStorage(
+        localStorageHelpers.LStoreKeys.isAuthenticated,
+        true
+      );
+      localStorageHelpers.setItemInLocalStorage(
+        localStorageHelpers.LStoreKeys.currentUser,
+        currentUser
+      );
 
       history.push(RoutePath.Dashboard);
     };
@@ -56,7 +66,7 @@ export const useAuthProvider = () => {
 
   const authContextData: AuthContextData = {
     currentUser: currentUser,
-    isLoggedIn: isLoggedIn || checkIfLoggedIn(),
+    isAuthenticated: isAuthenticated || checkIfLoggedIn(),
     onSignup: signup,
     onLogin: login,
     onLogout: logout,

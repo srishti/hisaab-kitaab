@@ -1,7 +1,7 @@
 import Layout from "../../components/layout/Layout";
 
 const Dashboard: React.FC = () => {
-  return <Layout />;
+  return null;
 };
 
 export default Dashboard;

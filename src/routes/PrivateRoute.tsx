@@ -12,7 +12,7 @@ const PrivateRoute: React.FC<RouteProps> = (props) => {
     <Route
       {...rest}
       render={({ location }) =>
-        auth.isLoggedIn ? (
+        auth.isAuthenticated ? (
           children
         ) : (
           <Redirect

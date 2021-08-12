@@ -28,14 +28,14 @@ const Layout: React.FC = (props) => {
 
   return (
     <div className={styles["layout"]}>
-      {auth.isLoggedIn && (
+      {auth.isAuthenticated && (
         <MainNavigation
           className={styles["main-navigation"]}
           isSidebarVisible={isSidebarVisible}
           onToggleSidebar={toggleSidebarVisibility}
         />
       )}
-      {auth.isLoggedIn && (
+      {auth.isAuthenticated && (
         <Sidebar
           className={styles["sidebar"]}
           isVisible={isSidebarVisible}
@@ -43,7 +43,7 @@ const Layout: React.FC = (props) => {
         />
       )}
       <main className={styles["main-content"]}>{props.children}</main>
-      {auth.isLoggedIn && isDeviceSmallScreen && isSidebarVisible && (
+      {auth.isAuthenticated && isDeviceSmallScreen && isSidebarVisible && (
         <Backdrop onClick={() => setIsSidebarVisible(false)} />
       )}
     </div>
