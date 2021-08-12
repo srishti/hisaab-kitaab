@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import Backdrop from "./Backdrop/Backdrop";
 import { useAuth } from "../../hooks/auth/use-auth";
 import * as uiHelpers from "../../utils/UI/uiHelpers";
-import { sidebarData } from "../../pages/Dashboard/sidebarData";
+import { sidebarData } from "./Sidebar/sidebarData";
 
 const Layout: React.FC = (props) => {
   const [isDeviceSmallScreen, setIsDeviceSmallScreen] = useState(false);

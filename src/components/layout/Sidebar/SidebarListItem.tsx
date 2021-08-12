@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { UiSidebarListItem } from "../LayoutComponents";
 import styles from "./SidebarListItem.module.scss";
 
@@ -10,11 +11,18 @@ const SidebarListItem: React.FC<UiSidebarListItem> = (props) => {
     styleClasses.unshift(props.className);
   }
 
-  return (
+  let textContent = <h4>{props.value}</h4>;
+  if (!props.active && props.routePath) {
+    textContent = <Link to={props.routePath}>{textContent}</Link>;
+  }
+
+  let listItemContentToRender = (
     <li className={styleClasses.join(" ")} onClick={props.onClick}>
-      <h4>{props.value}</h4>
+      {textContent}
     </li>
   );
+
+  return listItemContentToRender;
 };
 
 export default SidebarListItem;
