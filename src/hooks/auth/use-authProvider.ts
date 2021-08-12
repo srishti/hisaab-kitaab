@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { RoutePath } from "../../routes/routes";
 import { AuthContextData } from "./auth";
 import { CurrentUser, User } from "../../models/user";
 import { AuthAPI } from "../../api/auth/authApi";
@@ -7,6 +9,8 @@ import * as localStorageHelpers from "../../utils/LStoroge/localStorageHelpers";
 export const useAuthProvider = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState<CurrentUser>();
+
+  const history = useHistory();
 
   const authAPI = new AuthAPI();
 
@@ -40,6 +44,8 @@ export const useAuthProvider = () => {
 
       localStorageHelpers.setItemInLocalStorage("isLoggedIn", true);
       localStorageHelpers.setItemInLocalStorage("currentUser", currentUser);
+
+      history.push(RoutePath.Dashboard);
     };
     authAPI.login(email, password, successCallback);
   };

@@ -1,10 +1,5 @@
 import React, { Suspense } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Loader from "../components/UI/Loader/Loader";
 import { RoutePath } from "./routes";
@@ -21,29 +16,31 @@ const AppRoutes: React.FC = () => {
   const auth = useAuth();
 
   return (
-    <Router>
-      <Suspense fallback={<Loader />}>
-        <Switch>
-          <Route path={RoutePath.Home} exact>
-            <Redirect
-              to={auth.isLoggedIn ? RoutePath.Dashboard : RoutePath.Login}
-            />
-          </Route>
-          <Route path={RoutePath.Signup} exact>
-            <Signup />
-          </Route>
-          <Route path={RoutePath.Login} exact>
-            <Login />
-          </Route>
-          <PrivateRoute path={RoutePath.Dashboard}>
-            <Dashboard />
-          </PrivateRoute>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </Suspense>
-    </Router>
+    <Suspense fallback={<Loader />}>
+      <Switch>
+        <Route path={RoutePath.Home} exact>
+          <Redirect
+            to={auth.isLoggedIn ? RoutePath.Dashboard : RoutePath.Login}
+          />
+        </Route>
+
+        <Route path={RoutePath.Signup} exact>
+          <Signup />
+        </Route>
+
+        <Route path={RoutePath.Login} exact>
+          <Login />
+        </Route>
+
+        <PrivateRoute path={RoutePath.Dashboard} exact>
+          <Dashboard />
+        </PrivateRoute>
+
+        <Route path={RoutePath.NotFound}>
+          <NotFound />
+        </Route>
+      </Switch>
+    </Suspense>
   );
 };
 
