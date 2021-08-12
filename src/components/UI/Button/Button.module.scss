@@ -26,4 +26,12 @@
     box-shadow: 0px 2px 3px rgb(0, 0, 0, 0.4);
     color: colors.$white;
   }
+
+  @media screen and (min-width: 769px) {
+    font-size: $fs-standard * 1.1;
+  }
+
+  @media screen and (min-width: 1025px) {
+    font-size: $fs-standard * 1.2;
+  }
 }

@@ -13,6 +13,7 @@ const Dashboard = React.lazy(() => import("../pages/Dashboard/Dashboard"));
 const AccountsList = React.lazy(
   () => import("../pages/AccountsList/AccountsList")
 );
+const AddAccount = React.lazy(() => import("../pages/AddAccount/AddAccount"));
 const NotFound = React.lazy(() => import("../pages/NotFound/NotFound"));
 
 const AppRoutes: React.FC = () => {
@@ -41,6 +42,10 @@ const AppRoutes: React.FC = () => {
 
         <PrivateRoute path={RoutePath.AccountsList} exact>
           <AccountsList />
+        </PrivateRoute>
+
+        <PrivateRoute path={RoutePath.AddAccount} exact>
+          <AddAccount />
         </PrivateRoute>
 
         <Route path={RoutePath.NotFound}>
