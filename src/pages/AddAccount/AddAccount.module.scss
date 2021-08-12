@@ -1,0 +1,25 @@
+.add-account-page {
+  width: 95%;
+  max-width: 25rem;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+}
+
+.back-btn,
+.form-field {
+  margin-bottom: 1.5rem;
+}
+
+.account-type {
+  width: 40%;
+  max-width: 10rem;
+}
+
+.account-type-balance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -10,7 +10,7 @@ import styles from "./AccountsList.module.scss";
 
 const Accounts: React.FC = () => {
   return (
-    <div className={styles["accounts-list"]}>
+    <section className={styles["accounts-list"]}>
       <Link to={RoutePath.AddAccount}>
         <Button primary className={styles["add-account-btn"]}>
           <FontAwesomeIcon icon={faPlus} />
@@ -34,7 +34,7 @@ const Accounts: React.FC = () => {
           />
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 
