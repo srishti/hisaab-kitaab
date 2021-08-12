@@ -1,7 +1,8 @@
 @use "../../../styles/colors" as colors;
 @use "../../../styles/fonts" as *;
+@use "../../../styles/common" as common;
 
-.textbox {
+.dropdown {
   font-size: $fs-standard * 1.1;
 
   @media screen and (min-width: 769px) {
@@ -16,9 +17,10 @@
     display: block;
     color: colors.$gray-dark;
     margin-bottom: 0.25rem;
+    font-size: inherit;
   }
 
-  input {
+  select {
     display: block;
     width: 100%;
     padding: 0.5rem 0.75rem;

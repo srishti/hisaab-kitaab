@@ -19,6 +19,23 @@ interface UiLabel extends React.LabelHTMLAttributes<HTMLLabelElement> {
 
 export interface UiTextbox {
   className?: string;
-  input: UiInput;
   label?: UiLabel;
+  input: UiInput;
+}
+
+interface UiSelect extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  className?: string;
+}
+
+export interface UiSelectOption
+  extends React.OptionHTMLAttributes<HTMLOptionElement> {
+  className?: string;
+  value?: string | number;
+}
+
+export interface UiDropdown {
+  className?: string;
+  label?: UiLabel;
+  select?: UiSelect;
+  options?: UiSelectOption[];
 }
