@@ -57,7 +57,7 @@ export const useAuthProvider = () => {
         currentUser
       );
 
-      history.push(RoutePath.Dashboard);
+      history.push(RoutePath.AccountsList);
     };
     authAPI.login(email, password, successCallback);
   };
