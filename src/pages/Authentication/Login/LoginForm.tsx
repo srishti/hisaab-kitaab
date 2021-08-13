@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
+import { RoutePath } from "../../../routes/routes";
 import Card from "../../../components/UI/Card/Card";
 import Textbox from "../../../components/UI/Textbox/Textbox";
 import Button from "../../../components/UI/Button/Button";
@@ -38,6 +40,9 @@ const LoginForm: React.FC = () => {
         <Button primary type="submit">
           Login
         </Button>
+        <Link to={RoutePath.Signup}>
+          <div className={styles["signup-link"]}>New user? Signup!</div>
+        </Link>
       </form>
     </Card>
   );

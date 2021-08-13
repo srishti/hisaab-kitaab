@@ -1,3 +1,6 @@
+@use "../../styles/fonts" as *;
+@use "../../styles/colors" as colors;
+
 .login,
 .signup {
   position: absolute;
@@ -21,4 +24,12 @@
 
 .form-field {
   margin-bottom: 1.5rem;
+}
+
+.signup-link,
+.login-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: $fs-standard * 1.2;
+  color: colors.$primary;
 }
