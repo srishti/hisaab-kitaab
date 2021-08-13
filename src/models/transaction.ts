@@ -1,8 +1,13 @@
-export interface Transaction {
+import { Account } from "./account";
+import { Optional } from "../utils/helpers";
+
+export type TransactionAccount = Optional<Account, "currentBalance" | "type">;
+
+export interface Transaction<T> {
   id: string;
   date: number; // transaction date (time in milliseconds)
   description?: string;
-  fromAccount: string; // from account ID
-  toAccount: string; // to account ID
+  fromAccount: T;
+  toAccount: T;
   amount: number;
 }

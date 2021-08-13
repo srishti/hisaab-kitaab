@@ -11,14 +11,14 @@ import Dropdown from "../../../components/UI/Dropdown/Dropdown";
 import * as utilsHelpers from "../../../utils/helpers";
 import styles from "./AddAccount.module.scss";
 
-const getAllAccountTypes = () => {
+const getAllAccountTypesAsOptionsInDropdown = () => {
   let selectOptions: UiSelectOption[] = [
-    { value: "Select", selected: true, disabled: true },
+    { value: "Select", label: "Select", selected: true, disabled: true },
   ];
   const accountTypes: AccountType[] =
     utilsHelpers.getAllValuesInObjectOrEnum(AccountType);
-  for (let accountType of accountTypes) {
-    selectOptions.push({ value: accountType });
+  for (const accountType of accountTypes) {
+    selectOptions.push({ label: accountType, value: accountType });
   }
   return selectOptions;
 };
@@ -60,13 +60,13 @@ const AddAccount: React.FC = () => {
       },
     };
 
-    const accountAddedSuccessCallback = (data: Promise<any>) => {
+    const accountAddedSuccessCallback = (data: any) => {
       // TODO: Show notification instead of console log
       console.log("Account added successfully!", data);
       history.push(RoutePath.AccountsList);
     };
 
-    http.sendRequest(requestConfig, accountAddedSuccessCallback);
+    http.sendHttpRequest(requestConfig, accountAddedSuccessCallback);
   };
 
   return (
@@ -89,7 +89,7 @@ const AddAccount: React.FC = () => {
             className={styles["account-type"]}
             label={{ value: "Account Type" }}
             select={{ id: "account-type", name: "account-type" }}
-            options={getAllAccountTypes()}
+            options={getAllAccountTypesAsOptionsInDropdown()}
             ref={accountTypeSelectRef}
           />
           <Textbox

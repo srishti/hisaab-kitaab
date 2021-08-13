@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Transaction } from "../../models/transaction";
+import { Transaction, TransactionAccount } from "../../models/transaction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import * as utilsUiHelpers from "../../utils/UI/uiHelpers";
 import * as utilsHelpers from "../../utils/helpers";
 import styles from "./TransactionsList.module.scss";
 
-interface TransactionListItemComponent extends Transaction {
+interface TransactionListItemComponent extends Transaction<TransactionAccount> {
   className?: string;
 }
 
@@ -29,12 +29,12 @@ const TransactionListItem: React.FC<TransactionListItemComponent> = (props) => {
   let dateToRender = (
     <div className={styles["transaction-date-time"]}>
       <div>{utilsHelpers.getLocalTimezonFormattedDate(props.date)}</div>
-      <div>{utilsHelpers.getLocalTimeZoneFormattedTime(props.date)}</div>
+      {/* <div>{utilsHelpers.getLocalTimeZoneFormattedTime(props.date)}</div> */}
     </div>
   );
   let descriptionToRender = <span>{props.description || "N/A"}</span>;
-  let fromAccountToRender = <span>{props.fromAccount}</span>;
-  let toAccountToRender = <span>{props.toAccount}</span>;
+  let fromAccountToRender = <span>{props.fromAccount.name}</span>;
+  let toAccountToRender = <span>{props.toAccount.name}</span>;
   let amountToRender = (
     <>
       <FontAwesomeIcon icon={faRupeeSign} />

@@ -4,7 +4,7 @@ import { RequestConfig } from "./http";
 type useHttpReturnType = {
   isLoading: boolean;
   error: any; // TODO: Define Error; remove any type
-  sendRequest: (
+  sendHttpRequest: (
     requestConfig: RequestConfig,
     successCallback: (data: any) => void
   ) => Promise<any>;
@@ -14,7 +14,7 @@ export const useHttp = (): useHttpReturnType => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const sendRequest = useCallback(
+  const sendHttpRequest = useCallback(
     async (
       requestConfig: RequestConfig,
       successCallback: (data: any) => void
@@ -39,5 +39,5 @@ export const useHttp = (): useHttpReturnType => {
     []
   );
 
-  return { isLoading, error, sendRequest };
+  return { isLoading, error, sendHttpRequest };
 };

@@ -12,7 +12,7 @@ import styles from "./AccountsList.module.scss";
 
 const Accounts: React.FC = () => {
   const [accounts, setAccounts] = useState<Account[]>([]);
-  const http = useHttp();
+  const { sendHttpRequest: sendRequest } = useHttp();
 
   useEffect(() => {
     const requestConfig: httpConfig.RequestConfig = {
@@ -27,8 +27,8 @@ const Accounts: React.FC = () => {
       setAccounts(data);
     };
 
-    http.sendRequest(requestConfig, fetchAccountsSuccessCallback);
-  }, []);
+    sendRequest(requestConfig, fetchAccountsSuccessCallback);
+  }, [sendRequest]);
 
   return (
     <section className={styles["accounts-list"]}>

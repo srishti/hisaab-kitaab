@@ -30,7 +30,7 @@ const Dropdown = React.forwardRef<HTMLSelectElement, UiDropdown>(
               selected={option.selected}
               value={option.value}
             >
-              {option.value}
+              {option.label}
             </option>
           ))}
         </select>
