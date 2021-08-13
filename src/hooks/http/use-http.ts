@@ -4,7 +4,7 @@ import { RequestConfig } from "./http";
 type useHttpReturnType = {
   isLoading: boolean;
   error: any; // TODO: Define Error; remove any type
-  makeHttpRequest: (
+  sendRequest: (
     requestConfig: RequestConfig,
     successCallback: (data: any) => void
   ) => Promise<any>;
@@ -14,7 +14,7 @@ export const useHttp = (): useHttpReturnType => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const makeHttpRequest = useCallback(
+  const sendRequest = useCallback(
     async (
       requestConfig: RequestConfig,
       successCallback: (data: any) => void
@@ -28,7 +28,7 @@ export const useHttp = (): useHttpReturnType => {
           throw new Error("Something went wrong!");
         }
 
-        const data = response.json();
+        const data = await response.json();
 
         successCallback(data);
       } catch (err) {
@@ -39,5 +39,5 @@ export const useHttp = (): useHttpReturnType => {
     []
   );
 
-  return { isLoading, error, makeHttpRequest };
+  return { isLoading, error, sendRequest };
 };

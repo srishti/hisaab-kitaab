@@ -1,7 +1,7 @@
 export enum AccountType {
-  Bank = "Bank",
-  Cash = "Cash",
-  Wallet = "Wallet",
+  Bank = "bank",
+  Cash = "cash",
+  Wallet = "wallet",
 }
 
 export interface Account {
