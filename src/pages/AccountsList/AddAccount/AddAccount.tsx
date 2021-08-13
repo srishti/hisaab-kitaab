@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { RoutePath } from "../../routes/routes";
-import { UiSelectOption } from "../../components/UI/UIComponents";
-import { AccountType } from "../../models/account";
-import Button from "../../components/UI/Button/Button";
-import Textbox from "../../components/UI/Textbox/Textbox";
-import Dropdown from "../../components/UI/Dropdown/Dropdown";
-import * as utilsHelpers from "../../utils/helpers";
+import { RoutePath } from "../../../routes/routes";
+import { UiSelectOption } from "../../../components/UI/UIComponents";
+import { AccountType } from "../../../models/account";
+import Button from "../../../components/UI/Button/Button";
+import Textbox from "../../../components/UI/Textbox/Textbox";
+import Dropdown from "../../../components/UI/Dropdown/Dropdown";
+import * as utilsHelpers from "../../../utils/helpers";
 import styles from "./AddAccount.module.scss";
 
 const getAllAccountTypes = () => {

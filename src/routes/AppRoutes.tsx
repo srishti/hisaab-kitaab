@@ -13,7 +13,9 @@ const Dashboard = React.lazy(() => import("../pages/Dashboard/Dashboard"));
 const AccountsList = React.lazy(
   () => import("../pages/AccountsList/AccountsList")
 );
-const AddAccount = React.lazy(() => import("../pages/AddAccount/AddAccount"));
+const AddAccount = React.lazy(
+  () => import("../pages/AccountsList/AddAccount/AddAccount")
+);
 const TransactionsList = React.lazy(
   () => import("../pages/TransactionsList/TransactionsList")
 );
