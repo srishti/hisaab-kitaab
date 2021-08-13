@@ -4,6 +4,7 @@ import styles from "./Sidebar.module.scss";
 
 interface SidebarComponent extends UiSidebar {
   className?: string;
+  onClickMenu?: (menuItemId: string) => void;
 }
 
 const Sidebar: React.FC<SidebarComponent> = (props) => {
@@ -31,7 +32,7 @@ const Sidebar: React.FC<SidebarComponent> = (props) => {
             id={menuItem.id}
             routePath={menuItem.routePath}
             value={menuItem.value}
-            onClick={menuItem.onClick}
+            onClickMenu={props.onClickMenu}
           />
         ))}
       </ul>

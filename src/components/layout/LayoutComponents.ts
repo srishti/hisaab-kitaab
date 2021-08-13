@@ -15,7 +15,7 @@ export interface UiSidebarListItem
   id: string;
   routePath?: RoutePath;
   value: SidebarMenuType;
-  onClick?: React.MouseEventHandler;
+  onClickMenu?: (menuItemId: string) => void;
 }
 
 export interface UiSidebar {

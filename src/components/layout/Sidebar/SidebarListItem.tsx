@@ -16,8 +16,17 @@ const SidebarListItem: React.FC<UiSidebarListItem> = (props) => {
     textContent = <Link to={props.routePath}>{textContent}</Link>;
   }
 
+  const sidebarListItemClickHandler = () => {
+    if (props.onClickMenu) {
+      props.onClickMenu(props.id);
+    }
+  };
+
   let listItemContentToRender = (
-    <li className={styleClasses.join(" ")} onClick={props.onClick}>
+    <li
+      className={styleClasses.join(" ")}
+      onClick={sidebarListItemClickHandler}
+    >
       {textContent}
     </li>
   );

@@ -10,6 +10,7 @@ import styles from "./Layout.module.scss";
 const Layout: React.FC = (props) => {
   const [isDeviceSmallScreen, setIsDeviceSmallScreen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const [sidebarMenuItems, setSidebarMenuItems] = useState(sidebarData);
 
   const auth = useAuth();
 
@@ -17,6 +18,15 @@ const Layout: React.FC = (props) => {
 
   const toggleSidebarVisibility = () => {
     setIsSidebarVisible((prevIsSidebarVisible) => !prevIsSidebarVisible);
+  };
+
+  const selectSidebarMenuItem = (menuItemId: string) => {
+    let updatedSidebarMenuItems = [...sidebarMenuItems];
+    updatedSidebarMenuItems = updatedSidebarMenuItems.map((menuItem) => {
+      menuItem.active = menuItem.id === menuItemId ? true : false;
+      return menuItem;
+    });
+    setSidebarMenuItems(updatedSidebarMenuItems);
   };
 
   useEffect(() => {
@@ -40,6 +50,7 @@ const Layout: React.FC = (props) => {
           className={styles["sidebar"]}
           isVisible={isSidebarVisible}
           menuList={sidebarData}
+          onClickMenu={selectSidebarMenuItem}
         />
       )}
       <main className={styles["main-content"]}>{props.children}</main>
