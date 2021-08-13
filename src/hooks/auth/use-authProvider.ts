@@ -16,9 +16,11 @@ export const useAuthProvider = () => {
 
   const checkIfLoggedIn = (): boolean => {
     return (
+      isAuthenticated ||
       utilsLStoreHelpers.getItemFromLocalStorage(
         utilsLStoreHelpers.LStoreKeys.isAuthenticated
-      ) || false
+      ) ||
+      false
     );
   };
 
@@ -63,15 +65,17 @@ export const useAuthProvider = () => {
   const logout = () => {
     const successCallback = () => {
       // TODO: Show success message
-      setIsAuthenticated(false);
-      setCurrentUser(null);
 
+      // order for updating LStore and state is important
       utilsLStoreHelpers.removeItemFromLocalStorage(
         utilsLStoreHelpers.LStoreKeys.isAuthenticated
       );
       utilsLStoreHelpers.removeItemFromLocalStorage(
         utilsLStoreHelpers.LStoreKeys.currentUser
       );
+
+      setIsAuthenticated(false);
+      setCurrentUser(null);
 
       history.push(RoutePath.Login);
     };
@@ -81,7 +85,7 @@ export const useAuthProvider = () => {
 
   const authContextData: AuthContextData = {
     currentUser: currentUser,
-    isAuthenticated: isAuthenticated || checkIfLoggedIn(),
+    isAuthenticated: checkIfLoggedIn(),
     onSignup: signup,
     onLogin: login,
     onLogout: logout,

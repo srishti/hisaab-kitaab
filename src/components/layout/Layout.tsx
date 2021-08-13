@@ -36,25 +36,27 @@ const Layout: React.FC = (props) => {
     setIsSidebarVisible(!_isDeviceSmallScreen);
   }, [checkIfSmallScreenDevice]);
 
-  return (
+  const mainContentToRender = (
+    <main className={styles["main-content"]}>{props.children}</main>
+  );
+
+  return !auth.isAuthenticated ? (
+    mainContentToRender
+  ) : (
     <div className={styles["layout"]}>
-      {auth.isAuthenticated && (
-        <MainNavigation
-          className={styles["main-navigation"]}
-          isSidebarVisible={isSidebarVisible}
-          onToggleSidebar={toggleSidebarVisibility}
-        />
-      )}
-      {auth.isAuthenticated && (
-        <Sidebar
-          className={styles["sidebar"]}
-          isVisible={isSidebarVisible}
-          menuList={sidebarData}
-          onClickMenu={selectSidebarMenuItem}
-        />
-      )}
-      <main className={styles["main-content"]}>{props.children}</main>
-      {auth.isAuthenticated && isDeviceSmallScreen && isSidebarVisible && (
+      <MainNavigation
+        className={styles["main-navigation"]}
+        isSidebarVisible={isSidebarVisible}
+        onToggleSidebar={toggleSidebarVisibility}
+      />
+      <Sidebar
+        className={styles["sidebar"]}
+        isVisible={isSidebarVisible}
+        menuList={sidebarData}
+        onClickMenu={selectSidebarMenuItem}
+      />
+      {mainContentToRender}
+      {isDeviceSmallScreen && isSidebarVisible && (
         <Backdrop onClick={() => setIsSidebarVisible(false)} />
       )}
     </div>
