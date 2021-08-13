@@ -2,7 +2,7 @@
 .signup {
   position: absolute;
   width: 90%;
-  max-width: 20rem;
+  max-width: 25rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -11,6 +11,11 @@
     font-size: 1.35rem;
     text-align: center;
     margin-bottom: 1rem;
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
   }
 }
 

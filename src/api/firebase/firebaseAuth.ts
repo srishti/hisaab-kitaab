@@ -10,10 +10,7 @@ export class FirebaseAuthentication implements Authentication {
     this._firebase = Firebase.init();
   }
 
-  async signup(
-    user: User,
-    successCallback?: ((data: any) => void) | undefined
-  ) {
+  async signup(user: User, successCallback?: (data: any) => void) {
     try {
       const userCredentials = await this._firebase
         .auth()
@@ -31,7 +28,7 @@ export class FirebaseAuthentication implements Authentication {
   async login(
     email: string,
     password: string,
-    successCallback?: ((data: any) => void) | undefined
+    successCallback?: (data: any) => void
   ) {
     try {
       const userCredentials = await this._firebase
@@ -47,15 +44,11 @@ export class FirebaseAuthentication implements Authentication {
     }
   }
 
-  async sendEmailVerification(
-    successCallback?: ((data: any) => void) | undefined
-  ) {
+  async logout(successCallback?: () => void) {
     try {
-      const userCredentials = await this._firebase
-        .auth()
-        .currentUser?.sendEmailVerification();
+      await this._firebase.auth().signOut();
       if (successCallback) {
-        successCallback(userCredentials);
+        successCallback();
       }
     } catch (err) {
       // TODO: Handle error
@@ -64,10 +57,7 @@ export class FirebaseAuthentication implements Authentication {
     }
   }
 
-  async sendPassword(
-    email: string,
-    successCallback?: ((data: any) => void) | undefined
-  ) {
+  async sendPassword(email: string, successCallback?: (data: any) => void) {
     try {
       const userCredentials = await this._firebase
         .auth()

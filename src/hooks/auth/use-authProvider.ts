@@ -8,7 +8,7 @@ import * as utilsLStoreHelpers from "../../utils/LStoroge/localStorageHelpers";
 
 export const useAuthProvider = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState<CurrentUser>();
+  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
 
   const history = useHistory();
 
@@ -61,7 +61,22 @@ export const useAuthProvider = () => {
   };
 
   const logout = () => {
-    // TODO: Implement this!
+    const successCallback = () => {
+      // TODO: Show success message
+      setIsAuthenticated(false);
+      setCurrentUser(null);
+
+      utilsLStoreHelpers.removeItemFromLocalStorage(
+        utilsLStoreHelpers.LStoreKeys.isAuthenticated
+      );
+      utilsLStoreHelpers.removeItemFromLocalStorage(
+        utilsLStoreHelpers.LStoreKeys.currentUser
+      );
+
+      history.push(RoutePath.Login);
+    };
+
+    authAPI.logout(successCallback);
   };
 
   const authContextData: AuthContextData = {
