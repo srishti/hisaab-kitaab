@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { RoutePath } from "../../routes/routes";
 import Button from "../../components/UI/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -9,10 +11,12 @@ import styles from "./TransactionsList.module.scss";
 const TransactionsList: React.FC = () => {
   return (
     <section className={styles["transactions-list"]}>
-      <Button primary className={styles["add-transaction-btn"]}>
-        <FontAwesomeIcon icon={faPlus} />
-        &nbsp; Add Transaction
-      </Button>
+      <Link to={RoutePath.AddTransaction}>
+        <Button primary className={styles["add-transaction-btn"]}>
+          <FontAwesomeIcon icon={faPlus} />
+          &nbsp; Add Transaction
+        </Button>
+      </Link>
 
       <ul>
         <li className={styles["transactions-list-heading"]}>

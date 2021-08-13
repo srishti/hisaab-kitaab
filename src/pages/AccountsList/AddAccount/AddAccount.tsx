@@ -24,13 +24,13 @@ const getAllAccountTypes = () => {
 const AddAccount: React.FC = () => {
   const history = useHistory();
 
-  const goBackToAccountsPage = () => {
+  const goBackToAccountsListPage = () => {
     history.replace(RoutePath.AccountsList);
   };
 
   return (
     <section className={styles["add-account-page"]}>
-      <Button className={styles["back-btn"]} onClick={goBackToAccountsPage}>
+      <Button className={styles["back-btn"]} onClick={goBackToAccountsListPage}>
         Go Back
       </Button>
 

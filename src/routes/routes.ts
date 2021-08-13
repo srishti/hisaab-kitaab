@@ -6,5 +6,6 @@ export enum RoutePath {
   AccountsList = "/accounts",
   AddAccount = "/accounts/add",
   TransactionsList = "/transactions",
+  AddTransaction = "/transactions/add",
   NotFound = "*",
 }
