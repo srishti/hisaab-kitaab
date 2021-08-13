@@ -16,6 +16,10 @@
 .account-type {
   width: 45%;
   max-width: 10rem;
+
+  select {
+    text-transform: capitalize;
+  }
 }
 
 .account-type-balance {
