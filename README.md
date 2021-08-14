@@ -1,5 +1,17 @@
 # Hisaab Kitaab
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Future Scope](#future-scope)
+- [Watch Demo](#watch-demo)
+- [Play with Application](#play-with-application)
+- [Technologies Used](#technologies-used)
+- [Application Installation](#application-installation)
+  - [Frontend](#frontend)
+  - [Backend and Database](#backend-and-database)
+- [Team Members](#team-members)
+
 ## Overview
 
 **Hisaab Kitaab** is a bookkeeping application. It can manage expenses belonging to an individual user for personal uses. It can also manage expenses & income related to a business entity.
@@ -19,15 +31,15 @@ Currently, we have support for adding different types of accounts. Using these a
 5. Rich filters can help users to find exactly what they need.
 6. Multi-lingual support can help users use the application in their first language.
 
-## Watch Video
+## Watch Demo
 
 Watch the following video to know more about the application and see the prototype in action.  
 **[YouTube Video Link](https://youtu.be/rvnQtCTypDE)**
 
 ## Play with Application
 
-Follow the link given below to view a demo and to start using the application:  
-**[Demo Link](https://hisaabkitaab-xcoders.netlify.app)**
+Follow the link given below to start using the application:  
+**[App Link](https://hisaabkitaab-xcoders.netlify.app)**
 
 ## Technologies Used
 
@@ -65,7 +77,7 @@ Follow the instructions given below to install and run the application.
 
     This app was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Backend & Database
+### Backend and Database
 
 The REST API endpoints have been created using Google Firebase Cloud Functions and the database used is Google Firebase Cloud Firestore.  
 There is no additional setup required to install the backend application and database as they have already been hosted on Google Cloud.
