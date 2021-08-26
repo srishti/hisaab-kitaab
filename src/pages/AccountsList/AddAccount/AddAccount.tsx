@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { RoutePath } from "../../../routes/routes";
 import * as httpConfig from "../../../hooks/http/http";
+import { useAuth } from "../../../hooks/auth/use-auth";
 import { useHttp } from "../../../hooks/http/use-http";
 import { UiSelectOption } from "../../../components/UI/UIComponents";
 import { Account, AccountType } from "../../../models/account";
@@ -26,6 +27,7 @@ const getAllAccountTypesAsOptionsInDropdown = () => {
 const AddAccount: React.FC = () => {
   const history = useHistory();
   const http = useHttp();
+  const auth = useAuth();
 
   const accountNameInputRef = useRef<HTMLInputElement>(null);
   const accountTypeSelectRef = useRef<HTMLSelectElement>(null);
@@ -55,7 +57,10 @@ const AddAccount: React.FC = () => {
       url: httpConfig.BASE_URL + httpConfig.PathParameters.Accounts_Add,
       config: {
         method: httpConfig.HttpMethod.POST,
-        headers: httpConfig.COMMON_HEADERS,
+        headers: {
+          ...httpConfig.COMMON_HEADERS,
+          "x-auth-token": auth.currentUser!.accessToken,
+        },
         body: JSON.stringify(newAccount),
       },
     };

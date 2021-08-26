@@ -32,17 +32,20 @@ export const useAuthProvider = () => {
   };
 
   const login = (email: string, password: string) => {
-    const successCallback = (userCredentials: any) => {
+    const successCallback = async (userCredentials: any) => {
+      const accessToken = await userCredentials.user.getIdToken(true);
+
       const currentUser: CurrentUser = {
-        displayName: userCredentials.user.displayName,
+        uid: userCredentials.user.uid,
         email: userCredentials.user.email,
+        accessToken: accessToken,
+        displayName: userCredentials.user.displayName,
         emailVerified: userCredentials.user.emailVerified,
         isNewUser: userCredentials.additionalUserInfo.isNewUser,
         phoneNumber: userCredentials.user.phoneNumber,
         photoUrl: userCredentials.user.photoUrl,
         providerId: userCredentials.additionalUserInfo.providerId,
         refreshToken: userCredentials.user.refreshToken,
-        uid: userCredentials.user.uid,
       };
       // TODO: Show success message
       setIsAuthenticated(true);

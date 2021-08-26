@@ -7,13 +7,14 @@ export interface User {
 }
 
 export interface CurrentUser extends Partial<User> {
-  displayName?: string;
+  uid: string;
   email: string;
+  accessToken: string;
+  displayName?: string;
   emailVerified?: boolean;
   isNewUser?: boolean;
   phoneNumber?: string;
   photoUrl?: string;
   providerId?: string;
   refreshToken?: string;
-  uid: string;
 }
