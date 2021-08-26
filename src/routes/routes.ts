@@ -2,7 +2,7 @@ export enum RoutePath {
   Home = "/",
   Signup = "/signup",
   Login = "/login",
-  // Dashboard = "/dashboard",
+  Banking = "/banking",
   AccountsList = "/accounts",
   AddAccount = "/accounts/add",
   TransactionsList = "/transactions",

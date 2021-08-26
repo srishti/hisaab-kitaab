@@ -2,7 +2,7 @@ import React from "react";
 import { RoutePath } from "../../routes/routes";
 
 export enum SidebarMenuType {
-  // Dashboard = "Dashboard",
+  Banking = "Banking",
   Accounts = "Accounts",
   Transactions = "Transactions",
 }

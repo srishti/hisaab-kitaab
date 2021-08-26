@@ -5,11 +5,16 @@ export const sidebarData: UiSidebarListItem[] = [
   {
     id: "1",
     active: true,
+    value: SidebarMenuType.Banking,
+    routePath: RoutePath.Banking,
+  },
+  {
+    id: "2",
     value: SidebarMenuType.Accounts,
     routePath: RoutePath.AccountsList,
   },
   {
-    id: "2",
+    id: "3",
     value: SidebarMenuType.Transactions,
     routePath: RoutePath.TransactionsList,
   },

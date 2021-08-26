@@ -9,6 +9,7 @@ const Signup = React.lazy(
   () => import("../pages/Authentication/Signup/Signup")
 );
 const Login = React.lazy(() => import("../pages/Authentication/Login/Login"));
+const Banking = React.lazy(() => import("../pages/Banking/Banking"));
 const AccountsList = React.lazy(
   () => import("../pages/AccountsList/AccountsList")
 );
@@ -31,7 +32,7 @@ const AppRoutes: React.FC = () => {
       <Switch>
         <Route path={RoutePath.Home} exact>
           <Redirect
-            to={auth.isAuthenticated ? RoutePath.AccountsList : RoutePath.Login}
+            to={auth.isAuthenticated ? RoutePath.Banking : RoutePath.Login}
           />
         </Route>
 
@@ -42,6 +43,10 @@ const AppRoutes: React.FC = () => {
         <Route path={RoutePath.Login} exact>
           <Login />
         </Route>
+
+        <PrivateRoute path={RoutePath.Banking} exact>
+          <Banking />
+        </PrivateRoute>
 
         <PrivateRoute path={RoutePath.AccountsList} exact>
           <AccountsList />
