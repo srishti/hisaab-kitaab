@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import * as httpConfig from "../../../hooks/http/http";
+import { useHttp } from "../../../hooks/http/use-http";
+import { useAuth } from "../../../hooks/auth/use-auth";
 import { ReconcileTransaction } from "../../../models/userBankAccount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRupeeSign } from "@fortawesome/free-solid-svg-icons";
@@ -7,8 +10,10 @@ import * as utilsUiHelpers from "../../../utils/UI/uiHelpers";
 import * as utilsHelpers from "../../../utils/helpers";
 import styles from "./BankTransactionsList.module.scss";
 
-interface BankTransactionListItemComponent extends ReconcileTransaction {
+interface BankTransactionListItemComponent
+  extends utilsHelpers.Optional<ReconcileTransaction, "localTransaction"> {
   className?: string;
+  onReconcile: (bankTransactionId: string, localTransactionId: string) => void;
 }
 
 const BankTransactionListItem: React.FC<BankTransactionListItemComponent> = (
@@ -16,7 +21,17 @@ const BankTransactionListItem: React.FC<BankTransactionListItemComponent> = (
 ) => {
   const [isDeviceSmallScreen, setIsDeviceSmallScreen] = useState(false);
 
+  const http = useHttp();
+  const auth = useAuth();
+
   const { checkIfSmallScreenDevice } = utilsUiHelpers;
+
+  const confirmReconciliation = () => {
+    // if (!props.localTransactionId) {
+    //   return;
+    // }
+    // props.onReconcile(props.id, props.localTransactionId);
+  };
 
   useEffect(() => {
     const _isDeviceSmallScreen = checkIfSmallScreenDevice();
@@ -44,8 +59,15 @@ const BankTransactionListItem: React.FC<BankTransactionListItemComponent> = (
   );
   let recordTypeToRender = <span>{props.recordType}</span>;
   let remarksToRender = <span>{props.remarks}</span>;
-  let fromAccountToRender = <span>{props.fromAccount.name}</span>;
-  let toAccountToRender = <span>{props.toAccount.name}</span>;
+  let fromAccountToRender = props.fromAccount && (
+    <span>{props.fromAccount.name}</span>
+  );
+  let toAccountToRender = props.toAccount && (
+    <span>{props.toAccount.name}</span>
+  );
+  let descriptionToRender = props.description && (
+    <span>{props.description}</span>
+  );
 
   if (isDeviceSmallScreen) {
     dateToRender = (
@@ -96,6 +118,14 @@ const BankTransactionListItem: React.FC<BankTransactionListItemComponent> = (
         {toAccountToRender}
       </>
     );
+    descriptionToRender = (
+      <>
+        <span className={styles["bank-transaction-heading-small-screen"]}>
+          Description:
+        </span>
+        {descriptionToRender}
+      </>
+    );
   }
 
   return (
@@ -108,7 +138,8 @@ const BankTransactionListItem: React.FC<BankTransactionListItemComponent> = (
       <h4>{remarksToRender}</h4>
       <h4>{fromAccountToRender}</h4>
       <h4>{toAccountToRender}</h4>
-      <Button>Confirm</Button>
+      <h4>{descriptionToRender}</h4>
+      <Button onClick={confirmReconciliation}>Confirm</Button>
     </li>
   );
 };

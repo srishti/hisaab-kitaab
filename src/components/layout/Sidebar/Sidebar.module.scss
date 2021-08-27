@@ -32,3 +32,30 @@
     list-style-type: none;
   }
 }
+
+.sidebar-menu {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid colors.$gray;
+  cursor: pointer;
+  transition: common.$transition-linear;
+  color: colors.$gray-dark;
+  text-decoration: none;
+  font-size: 1.25rem;
+
+  &:hover,
+  &:active {
+    background-color: colors.$primary-light;
+    color: colors.$black;
+  }
+
+  &.active {
+    @extend .sidebar-menu;
+    background-color: colors.$primary;
+    cursor: default;
+    color: colors.$white;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+}

@@ -33,6 +33,11 @@ export interface BankTransaction {
 
 export interface ReconcileTransaction
   extends BankTransaction,
-    Optional<Transaction<TransactionAccount>, "amount" | "date"> {
+    Optional<
+      Transaction<TransactionAccount>,
+      "amount" | "date" | "fromAccount" | "toAccount"
+    > {
+  localTransaction: Transaction<TransactionAccount>;
+  localTransactionId?: string;
   className?: string;
 }

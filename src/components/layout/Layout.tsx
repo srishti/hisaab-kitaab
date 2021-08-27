@@ -4,13 +4,11 @@ import Sidebar from "./Sidebar/Sidebar";
 import Backdrop from "./Backdrop/Backdrop";
 import { useAuth } from "../../hooks/auth/use-auth";
 import * as utilsUiHelpers from "../../utils/UI/uiHelpers";
-import { sidebarData } from "./Sidebar/sidebarData";
 import styles from "./Layout.module.scss";
 
 const Layout: React.FC = (props) => {
   const [isDeviceSmallScreen, setIsDeviceSmallScreen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-  const [sidebarMenuItems, setSidebarMenuItems] = useState(sidebarData);
 
   const auth = useAuth();
 
@@ -19,18 +17,6 @@ const Layout: React.FC = (props) => {
   const toggleSidebarVisibility = useCallback(() => {
     setIsSidebarVisible((prevIsSidebarVisible) => !prevIsSidebarVisible);
   }, [isSidebarVisible]);
-
-  const selectSidebarMenuItem = useCallback(
-    (menuItemId: string) => {
-      let updatedSidebarMenuItems = [...sidebarMenuItems];
-      updatedSidebarMenuItems = updatedSidebarMenuItems.map((menuItem) => {
-        menuItem.active = menuItem.id === menuItemId ? true : false;
-        return menuItem;
-      });
-      setSidebarMenuItems(updatedSidebarMenuItems);
-    },
-    [sidebarMenuItems]
-  );
 
   useEffect(() => {
     const _isDeviceSmallScreen = checkIfSmallScreenDevice();
@@ -52,12 +38,7 @@ const Layout: React.FC = (props) => {
         isSidebarVisible={isSidebarVisible}
         onToggleSidebar={toggleSidebarVisibility}
       />
-      <Sidebar
-        className={styles["sidebar"]}
-        isVisible={isSidebarVisible}
-        menuList={sidebarMenuItems}
-        onClickMenu={selectSidebarMenuItem}
-      />
+      <Sidebar className={styles["sidebar"]} isVisible={isSidebarVisible} />
       {mainContentToRender}
       {isDeviceSmallScreen && isSidebarVisible && (
         <Backdrop onClick={() => setIsSidebarVisible(false)} />

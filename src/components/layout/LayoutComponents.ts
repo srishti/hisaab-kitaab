@@ -20,5 +20,5 @@ export interface UiSidebarListItem
 
 export interface UiSidebar {
   isVisible?: boolean;
-  menuList: UiSidebarListItem[];
+  menuList?: UiSidebarListItem[];
 }

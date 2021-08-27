@@ -4,7 +4,8 @@ export const BASE_URL =
 export enum PathParameters {
   BankAccounts = "/bankaccounts",
   BankAccounts_Create = "/bankaccounts/create",
-  BankTransactions = "/banktransactions",
+  BankTransactions_Reconcile = "/banktransactions/reconcile",
+  BankTransactions_Reconcile_Confirm = "/banktransactions/reconcile/confirm",
   Accounts = "/accounts",
   Accounts_Add = "/accounts/add",
   Account_Link = "/accounts/link",

@@ -35,6 +35,8 @@ What's better than providing all of these features along with a seemless and ric
 3. Rich filters can help users to find exactly what they need.
 4. Multi-lingual support can help users use the application in their first language.
 
+## App Screenshots
+
 ## Watch Demo
 
 Watch the following video to know more about the application and see the prototype in action.  

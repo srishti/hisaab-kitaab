@@ -37,11 +37,13 @@ const Banking: React.FC = () => {
         },
       };
 
-      const fetchBankAccountSuccessCallback = (data: any) => {
-        setIsAccountOpened(true);
-        setAccountDetails(data[0]);
-        // TODO: Show notification instead of console log
-        console.log("Fetched bank account successfully!", data);
+      const fetchBankAccountSuccessCallback = (data: any[]) => {
+        if (data.length > 0) {
+          setIsAccountOpened(true);
+          setAccountDetails(data[0]);
+          // TODO: Show notification instead of console log
+          console.log("Fetched bank account successfully!", data);
+        }
       };
 
       http.sendHttpRequest(requestConfig, fetchBankAccountSuccessCallback);
@@ -52,7 +54,9 @@ const Banking: React.FC = () => {
 
   const fetchTransactions = () => {
     const requestConfig: httpConfig.RequestConfig = {
-      url: httpConfig.BASE_URL + httpConfig.PathParameters.BankAccounts,
+      url:
+        httpConfig.BASE_URL +
+        httpConfig.PathParameters.BankTransactions_Reconcile,
       config: {
         method: httpConfig.HttpMethod.GET,
         headers: {
@@ -62,12 +66,50 @@ const Banking: React.FC = () => {
     };
 
     const fetchTransactionsSuccessCallback = (data: any) => {
+      console.log("Fetched all transactions sucessfully!", data);
       setTransactions(data);
       // TODO: Show notification instead of console log
-      console.log("Fetched all transactions sucessfully!", data);
     };
 
     http.sendHttpRequest(requestConfig, fetchTransactionsSuccessCallback);
+  };
+
+  const confirmReconciledTransaction = (
+    bankTransactionId: string,
+    localTransactionId: string
+  ) => {
+    const reconciledTransaction = {
+      bankTransactionId: bankTransactionId,
+      localTransactionId: localTransactionId,
+    };
+    const requestConfig: httpConfig.RequestConfig = {
+      url:
+        httpConfig.BASE_URL +
+        httpConfig.PathParameters.BankTransactions_Reconcile_Confirm,
+      config: {
+        method: httpConfig.HttpMethod.POST,
+        headers: {
+          "x-auth-token": auth.accessToken || "",
+        },
+        body: JSON.stringify(reconciledTransaction),
+      },
+    };
+
+    const reconcileConfirmTransactionSuccessCallback = (data: any) => {
+      console.log("Reconciled transaction sucessfully!", data);
+
+      const updatedTransactions = [...transactions];
+      updatedTransactions.filter(
+        (transaction) => transaction.id !== bankTransactionId
+      );
+      setTransactions(updatedTransactions);
+      // TODO: Show notification instead of console log
+    };
+
+    http.sendHttpRequest(
+      requestConfig,
+      reconcileConfirmTransactionSuccessCallback
+    );
   };
 
   const renderOpenAccountContent = (
@@ -90,7 +132,7 @@ const Banking: React.FC = () => {
         </h4>
         <h4>
           <span className={styles["account-details-heading"]}>
-            Account ID:{" "}
+            Bank Account ID:{" "}
           </span>{" "}
           {accountDetails.accountId}
         </h4>
@@ -104,7 +146,10 @@ const Banking: React.FC = () => {
       </div>
 
       {transactions.length > 0 && (
-        <BankTransactionsList transactions={transactions} />
+        <BankTransactionsList
+          transactions={transactions}
+          onReconcile={confirmReconciledTransaction}
+        />
       )}
     </>
   );
