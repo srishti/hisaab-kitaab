@@ -24,8 +24,4 @@ export class AuthAPI {
   logout(successCallback?: () => void) {
     this._methods.logout(successCallback);
   }
-
-  sendPassword(email: string, successCallback?: (data: any) => void) {
-    this._methods.sendPassword(email, successCallback);
-  }
 }

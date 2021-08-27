@@ -19,10 +19,11 @@
 .accounts-list-heading,
 .account-list-item {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 1.5rem;
   padding: 0.75rem 0;
   border-bottom: 1px solid colors.$gray-light;
+  align-items: center;
 
   h3,
   h4 {
@@ -44,4 +45,8 @@
 .account-balance {
   display: flex;
   align-items: center;
+}
+
+.link-account-btn {
+  width: 5rem;
 }

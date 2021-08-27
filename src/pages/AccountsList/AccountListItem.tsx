@@ -2,10 +2,13 @@ import React from "react";
 import { Account } from "../../models/account";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRupeeSign } from "@fortawesome/free-solid-svg-icons";
+import Button from "../../components/UI/Button/Button";
 import styles from "./AccountsList.module.scss";
 
 interface AccountsListItemComponent extends Account {
   className?: string;
+  isLinked: boolean;
+  onLink: () => void;
 }
 
 const AccountListItem: React.FC<AccountsListItemComponent> = (props) => {
@@ -18,6 +21,13 @@ const AccountListItem: React.FC<AccountsListItemComponent> = (props) => {
         &nbsp;
         <h4>{props.currentBalance.toFixed(2)}</h4>
       </div>
+      {props.isLinked ? (
+        <h4>Linked</h4>
+      ) : (
+        <Button className={styles["link-account-btn"]} onClick={props.onLink}>
+          Link
+        </Button>
+      )}
     </li>
   );
 };

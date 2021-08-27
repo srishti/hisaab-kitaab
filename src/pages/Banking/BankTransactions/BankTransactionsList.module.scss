@@ -1,0 +1,53 @@
+@use "../../../styles/colors" as colors;
+
+.bank-transactions-list-heading,
+.bank-transaction-list-item {
+  display: grid;
+
+  padding: 0.75rem 0;
+  border-bottom: 1px solid colors.$gray-light;
+
+  h3,
+  h4 {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 769px) {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+.bank-transactions-list-heading {
+  display: none;
+
+  @media screen and (min-width: 769px) {
+    display: grid;
+    color: colors.$primary;
+  }
+}
+
+.bank-transaction-list-item {
+  align-items: center;
+
+  h4 {
+    font-weight: lighter;
+    display: inline-block;
+    word-break: break-word;
+    color: colors.$gray-dark;
+  }
+}
+
+.bank-transaction-date-time div:first-child {
+  margin-bottom: 0.25rem;
+}
+
+.bank-transaction-heading-small-screen {
+  color: colors.$primary;
+  margin-right: 0.5rem;
+}
+
+.bank-transaction-amount {
+  display: flex;
+  align-items: center;
+}

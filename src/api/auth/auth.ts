@@ -9,5 +9,4 @@ export interface Authentication {
     successCallback?: (data: any) => void
   ) => void;
   logout: (successCallback?: () => void) => void;
-  sendPassword: (email: string, successCallback?: (data: any) => void) => void;
 }

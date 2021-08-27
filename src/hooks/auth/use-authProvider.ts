@@ -24,6 +24,16 @@ export const useAuthProvider = () => {
     );
   };
 
+  const getAccessToken = (): string | null => {
+    return (
+      currentUser?.accessToken ||
+      utilsLStoreHelpers.getItemFromLocalStorage(
+        utilsLStoreHelpers.LStoreKeys.accessToken
+      ) ||
+      null
+    );
+  };
+
   const signup = (user: User) => {
     const successCallback = (userCredentials: any) => {
       // TODO: Show success message and change any type of userCredentials
@@ -59,6 +69,10 @@ export const useAuthProvider = () => {
         utilsLStoreHelpers.LStoreKeys.currentUser,
         currentUser
       );
+      utilsLStoreHelpers.setItemInLocalStorage(
+        utilsLStoreHelpers.LStoreKeys.accessToken,
+        accessToken
+      );
 
       history.push(RoutePath.Banking);
     };
@@ -76,6 +90,9 @@ export const useAuthProvider = () => {
       utilsLStoreHelpers.removeItemFromLocalStorage(
         utilsLStoreHelpers.LStoreKeys.currentUser
       );
+      utilsLStoreHelpers.removeItemFromLocalStorage(
+        utilsLStoreHelpers.LStoreKeys.accessToken
+      );
 
       setIsAuthenticated(false);
       setCurrentUser(null);
@@ -87,6 +104,7 @@ export const useAuthProvider = () => {
   };
 
   const authContextData: AuthContextData = {
+    accessToken: getAccessToken(),
     currentUser: currentUser,
     isAuthenticated: checkIfLoggedIn(),
     onSignup: signup,

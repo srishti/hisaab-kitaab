@@ -10,6 +10,9 @@ const Signup = React.lazy(
 );
 const Login = React.lazy(() => import("../pages/Authentication/Login/Login"));
 const Banking = React.lazy(() => import("../pages/Banking/Banking"));
+const OpenBankAccount = React.lazy(
+  () => import("../pages/Banking/OpenBankAccount/OpenBankAccount")
+);
 const AccountsList = React.lazy(
   () => import("../pages/AccountsList/AccountsList")
 );
@@ -46,6 +49,10 @@ const AppRoutes: React.FC = () => {
 
         <PrivateRoute path={RoutePath.Banking} exact>
           <Banking />
+        </PrivateRoute>
+
+        <PrivateRoute path={RoutePath.OpenBankAccount} exact>
+          <OpenBankAccount />
         </PrivateRoute>
 
         <PrivateRoute path={RoutePath.AccountsList} exact>

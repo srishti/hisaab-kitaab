@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import MainNavigation from "./MainNavigation/MainNavigation";
 import Sidebar from "./Sidebar/Sidebar";
 import Backdrop from "./Backdrop/Backdrop";
@@ -16,18 +16,21 @@ const Layout: React.FC = (props) => {
 
   const { checkIfSmallScreenDevice } = utilsUiHelpers;
 
-  const toggleSidebarVisibility = () => {
+  const toggleSidebarVisibility = useCallback(() => {
     setIsSidebarVisible((prevIsSidebarVisible) => !prevIsSidebarVisible);
-  };
+  }, [isSidebarVisible]);
 
-  const selectSidebarMenuItem = (menuItemId: string) => {
-    let updatedSidebarMenuItems = [...sidebarMenuItems];
-    updatedSidebarMenuItems = updatedSidebarMenuItems.map((menuItem) => {
-      menuItem.active = menuItem.id === menuItemId ? true : false;
-      return menuItem;
-    });
-    setSidebarMenuItems(updatedSidebarMenuItems);
-  };
+  const selectSidebarMenuItem = useCallback(
+    (menuItemId: string) => {
+      let updatedSidebarMenuItems = [...sidebarMenuItems];
+      updatedSidebarMenuItems = updatedSidebarMenuItems.map((menuItem) => {
+        menuItem.active = menuItem.id === menuItemId ? true : false;
+        return menuItem;
+      });
+      setSidebarMenuItems(updatedSidebarMenuItems);
+    },
+    [sidebarMenuItems]
+  );
 
   useEffect(() => {
     const _isDeviceSmallScreen = checkIfSmallScreenDevice();
@@ -52,7 +55,7 @@ const Layout: React.FC = (props) => {
       <Sidebar
         className={styles["sidebar"]}
         isVisible={isSidebarVisible}
-        menuList={sidebarData}
+        menuList={sidebarMenuItems}
         onClickMenu={selectSidebarMenuItem}
       />
       {mainContentToRender}

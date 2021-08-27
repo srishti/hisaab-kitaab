@@ -67,7 +67,7 @@ const AddTransaction: React.FC = () => {
         method: httpConfig.HttpMethod.POST,
         headers: {
           ...httpConfig.COMMON_HEADERS,
-          "x-auth-token": auth.currentUser!.accessToken,
+          "x-auth-token": auth.accessToken || "",
         },
         body: JSON.stringify(newTransaction),
       },
@@ -87,6 +87,9 @@ const AddTransaction: React.FC = () => {
       url: httpConfig.BASE_URL + httpConfig.PathParameters.Accounts,
       config: {
         method: httpConfig.HttpMethod.GET,
+        headers: {
+          "x-auth-token": auth.accessToken || "",
+        },
       },
     };
 

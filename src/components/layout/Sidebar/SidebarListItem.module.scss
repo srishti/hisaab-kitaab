@@ -21,8 +21,11 @@
   &.active {
     @extend .sidebar-menu;
     background-color: colors.$primary;
-    color: colors.$white;
     cursor: default;
+
+    a {
+      color: colors.$white;
+    }
   }
 
   h4 {

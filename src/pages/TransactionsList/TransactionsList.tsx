@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RoutePath } from "../../routes/routes";
 import { useHttp } from "../../hooks/http/use-http";
+import { useAuth } from "../../hooks/auth/use-auth";
 import * as httpConfig from "../../hooks/http/http";
 import { Transaction, TransactionAccount } from "../../models/transaction";
 import Button from "../../components/UI/Button/Button";
@@ -16,6 +17,7 @@ const TransactionsList: React.FC = () => {
   >([]);
 
   const { sendHttpRequest: sendRequest } = useHttp();
+  const auth = useAuth();
 
   useEffect(() => {
     const fetchTransactions = () => {
@@ -23,6 +25,9 @@ const TransactionsList: React.FC = () => {
         url: httpConfig.BASE_URL + httpConfig.PathParameters.Transactions,
         config: {
           method: httpConfig.HttpMethod.GET,
+          headers: {
+            "x-auth-token": auth.accessToken || "",
+          },
         },
       };
 

@@ -59,7 +59,7 @@ const AddAccount: React.FC = () => {
         method: httpConfig.HttpMethod.POST,
         headers: {
           ...httpConfig.COMMON_HEADERS,
-          "x-auth-token": auth.currentUser!.accessToken,
+          "x-auth-token": auth.accessToken || "",
         },
         body: JSON.stringify(newAccount),
       },
@@ -91,7 +91,7 @@ const AddAccount: React.FC = () => {
           className={`${styles["account-type-balance"]} ${styles["form-field"]}`}
         >
           <Dropdown
-            className={styles["account-type"]}
+            className={styles["dropdown-field"]}
             label={{ value: "Account Type" }}
             select={{ id: "account-type", name: "account-type" }}
             options={getAllAccountTypesAsOptionsInDropdown()}

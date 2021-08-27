@@ -56,19 +56,4 @@ export class FirebaseAuthentication implements Authentication {
       // const errorMessage = err.message;
     }
   }
-
-  async sendPassword(email: string, successCallback?: (data: any) => void) {
-    try {
-      const userCredentials = await this._firebase
-        .auth()
-        .sendPasswordResetEmail(email);
-      if (successCallback) {
-        successCallback(userCredentials);
-      }
-    } catch (err) {
-      // TODO: Handle error
-      // const errorCode = err.code;
-      // const errorMessage = err.message;
-    }
-  }
 }

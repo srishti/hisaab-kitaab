@@ -4,6 +4,7 @@ import { AuthContextData } from "../hooks/auth/auth";
 import { useAuthProvider } from "../hooks/auth/use-authProvider";
 
 const initialAuthContextData: AuthContextData = {
+  accessToken: null,
   currentUser: null,
   isAuthenticated: false,
   onSignup: (user: User) => {},

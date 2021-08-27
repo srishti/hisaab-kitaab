@@ -3,6 +3,7 @@ export enum RoutePath {
   Signup = "/signup",
   Login = "/login",
   Banking = "/banking",
+  OpenBankAccount = "/banking/open",
   AccountsList = "/accounts",
   AddAccount = "/accounts/add",
   TransactionsList = "/transactions",

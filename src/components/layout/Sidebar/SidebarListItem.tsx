@@ -12,7 +12,7 @@ const SidebarListItem: React.FC<UiSidebarListItem> = (props) => {
   }
 
   let textContent = <h4>{props.value}</h4>;
-  if (!props.active && props.routePath) {
+  if (props.routePath) {
     textContent = <Link to={props.routePath}>{textContent}</Link>;
   }
 

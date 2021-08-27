@@ -1,6 +1,7 @@
 export enum LStoreKeys {
   isAuthenticated = "authenticated",
   currentUser = "user",
+  accessToken = "accessToken",
 }
 
 export const getItemFromLocalStorage = (key: string): any => {

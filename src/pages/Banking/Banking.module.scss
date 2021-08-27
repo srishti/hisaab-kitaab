@@ -1,0 +1,22 @@
+@use "../../styles/colors" as colors;
+
+.banking {
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+}
+
+.open-bank-account-btn {
+  margin-bottom: 1rem;
+}
+
+.account-details-heading {
+  font-weight: lighter;
+  color: colors.$primary-dark;
+}
+
+.fetch-transactions-btn {
+  margin-top: 1rem;
+}
