@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
 - [Future Scope](#future-scope)
+- [App Screenshots](#app-screenshots)
 - [Watch Demo](#watch-demo)
 - [Play with Application](#play-with-application)
 - [Technologies Used](#technologies-used)
@@ -22,11 +23,11 @@ We aim to make the application easy-to-use for even those people who do not unde
 
 We provide support for adding different types of accounts. Using these accounts, the user can record a transaction like the way it's typically done in a ledger. For example, a user can add two accounts - A1 and A2. Now, the user is able to record a transaction between these accounts like transfer of X funds from A1 to A2.
 
-Using **Fusion API**, a user can now open a bank account from within the application. Not only this, a user can fetch all the transactions associated with the opened bank account. Once a user has opened a bank account within the application, the user is allowed to link the bank account to any of the accounts existsing within the application. For example, a user can link account X to the newly opened bank account. The most striking feature is that the user can **reconcile** the transactions recorded locally within the application and the transactions associated with the opened bank account. This makes the user get a clear picture of the banking transactions which are too cumbersome to comprehend otherwise. Most of the times, the transactions that a user records in the application and the transactions reflected in the bank statement are not consistent.
+Using **Fusion API**, a user can now open a bank account from within the application. Not only this, a user can fetch all the transactions associated with the opened bank account. Once a user has opened a bank account within the application, the user is allowed to link the bank account to any of the accounts existing within the application. For example, a user can link account X to the newly opened bank account. The most striking feature is that the user can **reconcile** the transactions recorded locally within the application and the transactions associated with the opened bank account. This makes the user get a clear picture of the banking transactions which are too cumbersome to comprehend otherwise. Most of the time, the transactions that a user records in the application and the transactions reflected in the bank statement are not consistent.
 
 Reconciliation is possible by a transactions matching algorithm that provides the best guess to match a bank transaction with one or more transactions existing within the application. The guessing algorithm depends on the timestamp of the transaction, the amount involved and the fact that whether the amount was debited or credited. Lastly, all the transactions are presented to the user who can then provide a consent and confirmation that the guessed transaction mapping is correct. All the correctly mapped transactions are then saved inside the application for future references.
 
-What's better than providing all of these features along with a seemless and rich user experience?
+What's better than providing all of these features along with a seamless and rich user experience?
 
 ## Future Scope
 
@@ -36,6 +37,46 @@ What's better than providing all of these features along with a seemless and ric
 4. Multi-lingual support can help users use the application in their first language.
 
 ## App Screenshots
+
+**Signup Page**
+
+![Signup](./screenshots/signup.png)
+
+**Login Page**
+
+![Login](./screenshots/login.png)
+
+**Banking Page**
+
+![Banking](./screenshots/banking.png)t
+
+**Open Bank Account Page**
+
+![Open Bank Account](./screenshots/open-bank-account.png)
+
+**Accounts Page**
+
+![Accounts](./screenshots/accounts.png)
+
+**Add Account Page**
+
+![Accounts](./screenshots/add-account.png)
+
+**Linked Account on Accounts Page**
+
+![Add Transaction](./screenshots/linked-account.png)
+
+**Transactions Page**
+
+![Transactions](./screenshots/transactions.png)
+
+**Add Transaction Page**
+
+![Add Transaction](./screenshots/add-transaction.png)
+
+**Reconcile Transactions on Banking Page**
+
+![Reconcile Transactions](./screenshots/reconcile-transactions.png)
 
 ## Watch Demo
 
